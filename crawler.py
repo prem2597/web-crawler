@@ -31,10 +31,16 @@ class PyCrawler(object):
         return None
 
     def crawl(self, url):
-        pass
+        for link in self.get_links(url):
+            if link in self.visited:
+                continue
+            print(link)
+            self.visited.add(link)
+            info = self.extract_info(link)
+            self.crawl(link)
 
     def start(self):
-        pass
+        self.crawl(self.starting_url)
 
 if __name__=="__main__":
     crawler = PyCrawler()
