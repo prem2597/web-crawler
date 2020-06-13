@@ -8,8 +8,8 @@ class PyCrawler(object):
         self.starting_url = starting_url
         self.visited = set()
         # self.proxy_orbit_key = os.getenv("PROXY_ORBIT_TOKEN")    
-        # self.user_agent = "*******"    
-        # self.proxy_orbit_url = f"**********"
+        # self.user_agent = "#########"    
+        # self.proxy_orbit_url = f"##############"
 
     def get_html(self, url):
         try:
