@@ -1,15 +1,27 @@
 import requests
 import re
 from urllib.parse import urlparse
+import os
 
 class PyCrawler(object):
     def __init__(self, starting_url):
         self.starting_url = starting_url
         self.visited = set()
+        # self.proxy_orbit_key = os.getenv("PROXY_ORBIT_TOKEN")    
+        # self.user_agent = "*******"    
+        # self.proxy_orbit_url = f"**********"
 
     def get_html(self, url):
         try:
+            # proxy_info = requests.get(self.proxy_orbit_url).json()                                                                         
+            # proxy = proxy_info['curl']                                                                                                
+            # html = requests.get(url, headers={"User-Agent":self.user_agent}, proxies={"http":proxy, "https":proxy}, timeout=5)
             html = requests.get(url)
+            '''
+                if the proxy is not set then : use the
+                html = requests.get(url, headers={"User-Agent":self.user_agent}, timeout=5)
+                Note: This will use the IP address to crawl the data.
+            ''' 
         except Exception as e:
             print(e)
             return ""
@@ -45,6 +57,6 @@ class PyCrawler(object):
         self.crawl(self.starting_url)
 
 if __name__=="__main__":
-    crawler = PyCrawler()
+    crawler = PyCrawler("https://google.com")
     crawler.start()
 
